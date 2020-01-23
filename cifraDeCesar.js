@@ -41,7 +41,9 @@ url = 'https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=MY_TOK
         //    console.log(json)
            myJson = JSON.stringify(json)                                // transforma meu objeto em string para ser guardado
            const fs = require('fs')
-           fs.writeFile('answer.json', myJson)                          // escreve minha string criando o arquivo answer.json
+           fs.writeFile('answer.json', myJson, function(err, result) { // escreve minha string criando o arquivo answer.json
+            if(err) console.log('error', err);
+          })                              
        })
        .catch( (err) => {
            console.log('ERROR: ', err.message)
